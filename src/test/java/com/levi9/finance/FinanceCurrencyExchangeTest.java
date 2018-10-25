@@ -18,7 +18,7 @@ public class FinanceCurrencyExchangeTest {
         //        System.setProperty("webdriver.gecko.driver", "/Users/veronika/Tools/geckodriver");
         System.setProperty("webdriver.chrome.driver", "/Users/veronika/Tools/chromedriver");
 
-// Create a new instance of the Firefox driver
+// Create a new instance of the Chrome driver
 // Notice that the remainder of the code relies on the interface,
 // not the implementation.
         WebDriver driver = new ChromeDriver();
@@ -67,10 +67,10 @@ public class FinanceCurrencyExchangeTest {
     @Test
     public void usdPurchaseShouldBeGreaterThanSale() {
 
-        WebElement usdPurchaseElement = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[1]/div[1]/div/table/tbody/tr[1]/td[1]/span/span[1]"));
+        WebElement usdPurchaseElement = driver.findElement(By.xpath("//div[@class='widget-currency_bank']//tr[th='USD']//td[1]//span[not(@class)]"));
         double usdPurchase = Double.parseDouble(usdPurchaseElement.getText());
 
-        WebElement usdSaleElement = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[1]/div[1]/div/table/tbody/tr[1]/td[2]/span/span[1]"));
+        WebElement usdSaleElement = driver.findElement(By.xpath("//div[@class='widget-currency_bank']//tr[th='USD']//td[2]//span[not(@class)]"));
         double usdSale = Double.parseDouble(usdSaleElement.getText());
 
         System.out.println("USD Purchase = " + usdPurchase);
@@ -82,10 +82,10 @@ public class FinanceCurrencyExchangeTest {
     @Test
     public void eurPurchaseShouldBeGreaterThanSale() {
 
-        WebElement eurPurchaseElement = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[1]/div[1]/div/table/tbody/tr[2]/td[1]/span/span[1]"));
+        WebElement eurPurchaseElement = driver.findElement(By.xpath("//div[@class='widget-currency_bank']//tr[th='EUR']//td[1]//span[not(@class)]"));
         double eurPurchase = Double.parseDouble(eurPurchaseElement.getText());
 
-        WebElement eurSaleElement = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[1]/div[1]/div/table/tbody/tr[2]/td[2]/span/span[1]"));
+        WebElement eurSaleElement = driver.findElement(By.xpath("//div[@class='widget-currency_bank']//tr[th='EUR']//td[2]//span[not(@class)]"));
         double eurSale = Double.parseDouble(eurSaleElement.getText());
 
         System.out.println("EUR Purchase = " + eurPurchase);
@@ -97,10 +97,10 @@ public class FinanceCurrencyExchangeTest {
     @Test
     public void rubPurchaseShouldBeGreaterThanSale() {
 
-        WebElement rubPurchaseElement = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[1]/div[1]/div/table/tbody/tr[3]/td[1]/span/span[1]"));
+        WebElement rubPurchaseElement = driver.findElement(By.xpath("//div[@class='widget-currency_bank']//tr[th='RUB']//td[1]//span[not(@class)]"));
         double rubPurchase = Double.parseDouble(rubPurchaseElement.getText());
 
-        WebElement rubSaleElement = driver.findElement(By.xpath("/html/body/div[2]/div[3]/div/div[1]/div[1]/div[1]/div/table/tbody/tr[3]/td[2]/span/span[1]"));
+        WebElement rubSaleElement = driver.findElement(By.xpath("//div[@class='widget-currency_bank']//tr[th='RUB']//td[2]//span[not(@class)]"));
         double rubSale = Double.parseDouble(rubSaleElement.getText());
 
         System.out.println("RUB Purchase = " + rubPurchase);
