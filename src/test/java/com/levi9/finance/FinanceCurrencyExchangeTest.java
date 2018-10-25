@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FinanceCurrencyExchangeTest {
@@ -109,5 +110,26 @@ public class FinanceCurrencyExchangeTest {
 
     }
 
+    @Test
+    public void checkCurrencyConverter() {
+        WebElement currencyAmountInput = driver.findElement(By.xpath("//input[@id='currency_amount']"));
+        currencyAmountInput.sendKeys("1000");
+
+        WebElement converterCurrencyElement = driver.findElement(By.xpath("//select[@id='converter_currency']"));
+        Select select = new Select(converterCurrencyElement);
+        select.selectByValue("USD");
+
+        WebElement usdPurchaseElement = driver.findElement(By.xpath("//div[@class='widget-currency_bank']//tr[th='USD']//td[1]//span[not(@class)]"));
+        double usdPurchase = Double.parseDouble(usdPurchaseElement.getText());
+
+        WebElement uahCurrencyExchangeElement = driver.findElement(By.xpath("//p[@id='UAH']/input[@id='currency_exchange']"));
+        String uahExhangeValue = uahCurrencyExchangeElement.getAttribute("value").replaceAll(" ", "");
+        double uahExchangeResult = Double.parseDouble(uahExhangeValue);
+
+        System.out.println("1000USD*usdPurchse: " + 1000*usdPurchase);
+        System.out.println("uahExhangeResult: " + uahExchangeResult);
+
+        Assert.assertEquals(1000*usdPurchase, uahExchangeResult, 0.0001);
+    }
 
 }
